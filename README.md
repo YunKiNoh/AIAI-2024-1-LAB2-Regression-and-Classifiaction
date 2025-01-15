@@ -244,7 +244,7 @@ overweight_data = pd.get_dummies(overweight_data, columns=['family_history_with_
 다음으로는 기존 데이터가 상대적인 크기로 정보를 담아내는 경우입니다. 이는 CAEC(식사 간 간식 섭취 빈도, no / Sometimes / Frequently / Always)와 같이 그 빈도에 따라 다른 정보를 담아내기 때문에 데이터를 수치화 할 때 상대적인 크기를 가지도록 처리하여야 합니다.
 
 ```python
-# -------Feature Data-------
+# -------Feature Data------- #
 # CAEC (식사 간 간식 섭취 빈도)
 overweight_data['CAEC'] = overweight_data['CAEC'].replace({'no': 0,'Sometimes': 1,'Frequently': 2,'Always': 3})
 
@@ -253,7 +253,7 @@ overweight_data['CALC'] = overweight_data['CALC'].replace({'no': 0,'Sometimes': 
 ```
 
 ```python
-# -------Target Data-------
+# -------Target Data------- #
 # NObeyesdad(level of obesity state: 'Insufficient_Weight', 'Normal_Weight', 'Overweight_Level_II', 'Overweight_Level_I', 'Obesity_Type_II', 'Obesity_Type_III', 'Obesity_Type_I')
 overweight_data['NObeyesdad'] = overweight_data['NObeyesdad'].replace({'Insufficient_Weight': 0, 'Normal_Weight': 1, 'Overweight_Level_II': 2, 'Overweight_Level_I': 3, 'Obesity_Type_II': 4, 'Obesity_Type_III': 5, 'Obesity_Type_I': 6})
 ```
