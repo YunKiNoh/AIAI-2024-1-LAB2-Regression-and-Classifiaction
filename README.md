@@ -160,7 +160,7 @@ RMSE: 2.133168007407893
 <p style="margin-top: 10px;">Figure 7. Learning Curve</p>
 </div>
 
-## Part2: Predict Obesity Level by Using Classification Model
+## Part2-1-Supervised Learning: Predict Obesity Level by Using Classification Model
 ### 1. Dataset Information
 Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 사람들에 대한 신체 정보를 활용하여 비만의 위험성 정도를 예측하였습니다. 
 <div align="center">
@@ -329,3 +329,6 @@ Confusion Matrix:
  [ 0  0  0  0  1 56  0]
  [ 0  0  5  0  1  0 70]]
 ```
+
+## Part2-2-Usupervised Learning: Predict Obesity Level by Using Classification Model
+비지도 학습은 라벨이 없는 데이터셋을 통하여 딥러닝 모델을 학습시키는 방식입니다. 비지도 학습을 진행하기 위해서 기존 비만 데이터셋의 라벨을 제거한 뒤에 기존 학습 데이터와 검증 데이터를 합쳐서 새로운 학습 데이터를 생성합니다. 그러고 난 뒤에 K-Means
