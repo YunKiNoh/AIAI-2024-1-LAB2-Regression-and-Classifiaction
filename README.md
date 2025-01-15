@@ -159,3 +159,30 @@ RMSE: 2.133168007407893
 ![image](https://github.com/user-attachments/assets/016ac72c-6095-4339-9763-1d15d6ff8682)
 <p style="margin-top: 10px;">Figure 7. Learning Curve</p>
 </div>
+
+## Part2: Predict Obesity Level by Using Classification Model
+### 2.1. Dataset Information
+Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 사람들에 대한 신체 정보를 활용하여 비만의 위험성 정도를 예측하였습니다. 
+<div align="center">
+
+| Variable Name     | Role     | Type         | Description                                         | Units         | Missing Values |
+| :---------------- | :------- | :----------- | :-------------------------------------------------- | :------------ | :------------- |
+| Gender            | Feature  | Categorical  | Gender (Male/Female)                               | -             | no             |
+| Age               | Feature  | Continuous   | Age                                                | years         | no             |
+| Height            | Feature  | Continuous   | Height                                             | meters        | no             |
+| Weight            | Feature  | Continuous   | Weight                                             | kilograms     | no             |
+| FAVC              | Feature  | Categorical  | Frequent consumption of high-caloric food (Yes/No) | -             | no             |
+| FCVC              | Feature  | Continuous   | Frequency of vegetable consumption                 | -             | no             |
+| NCP               | Feature  | Integer      | Number of main meals                               | count         | no             |
+| CAEC              | Feature  | Categorical  | Frequency of food consumption between meals        | -             | no             |
+| CH20              | Feature  | Continuous   | Daily water consumption                            | liters        | no             |
+| CALC              | Feature  | Categorical  | Frequency of alcohol consumption                   | -             | no             |
+| SCC               | Feature  | Categorical  | Monitoring of calorie consumption (Yes/No)        | -             | no             |
+| FAF               | Feature  | Continuous   | Physical activity frequency                        | hours/week    | no             |
+| TUE               | Feature  | Continuous   | Time using technology devices                      | hours/day     | no             |
+| MTRANS            | Feature  | Categorical  | Main mode of transportation                        | -             | no             |
+| Obesity Levels    | Target   | Categorical  | Obesity levels (Underweight, Normal, Overweight, Obese) | -             | no             |
+
+<p style="margin-top: 10px;">Table 1. Abalone Dataset Description</p>
+
+</div>
