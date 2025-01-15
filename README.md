@@ -201,3 +201,5 @@ Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 �
 <p style="margin-top: 10px;">Table 1. Obesity Dataset Description</p>
 
 </div>
+
+</div>
