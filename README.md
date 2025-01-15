@@ -196,7 +196,7 @@ Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 �
 | Obesity II              | 35.0 to 39.9       |
 | Obesity III             | 40 and above       |
 
-<div align="left">
+<div align="center">
 
 <p style="margin-top: 10px;">Table 1. Obesity Dataset Description</p>
 
