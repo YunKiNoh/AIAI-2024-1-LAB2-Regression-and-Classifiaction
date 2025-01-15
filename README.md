@@ -161,33 +161,35 @@ RMSE: 2.133168007407893
 </div>
 
 ## Part2: Predict Obesity Level by Using Classification Model
-### 2.1. Dataset Information
+### 1. Dataset Information
 Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 사람들에 대한 신체 정보를 활용하여 비만의 위험성 정도를 예측하였습니다. 
 <div align="center">
 
-| **Attribute Name**      | **Category**         | **Description**                                        | **Data Type**       | **Units**        |
-| :----------------------- | :------------------- | :----------------------------------------------------- | :------------------ | :--------------- |
-| **Gender**              | Demographics         | Gender of the individual (Male/Female)                | Categorical         | -                |
-| **Age**                 | Demographics         | Age of the individual                                  | Continuous          | Years            |
-| **Height**              | Demographics         | Height of the individual                               | Continuous          | Meters           |
-| **Weight**              | Demographics         | Weight of the individual                               | Continuous          | Kilograms        |
-| **FAVC**                | Eating Habits        | Frequent consumption of high-caloric food (Yes/No)    | Categorical         | -                |
-| **FCVC**                | Eating Habits        | Frequency of vegetable consumption                    | Continuous          | -                |
-| **NCP**                 | Eating Habits        | Number of main meals per day                          | Integer             | Count            |
-| **CAEC**                | Eating Habits        | Consumption of food between meals                     | Categorical         | -                |
-| **CH20**                | Eating Habits        | Daily water consumption                               | Continuous          | Liters           |
-| **CALC**                | Eating Habits        | Frequency of alcohol consumption                      | Categorical         | -                |
-| **SCC**                 | Physical Condition   | Monitoring of calorie consumption (Yes/No)           | Categorical         | -                |
-| **FAF**                 | Physical Condition   | Frequency of physical activity                        | Continuous          | Hours/Week       |
-| **TUE**                 | Physical Condition   | Time spent using technology devices                   | Continuous          | Hours/Day        |
-| **MTRANS**              | Physical Condition   | Main mode of transportation                           | Categorical         | -                |
-| **Obesity Levels**      | Target               | BMI-based obesity classification                      | Categorical         | -                |
+| **Attribute Name**                | **Category**         | **Description**                                        | **Data Type**       | **Units**        | **Non-null Count** |
+| :-------------------------------- | :------------------- | :----------------------------------------------------- | :------------------ | :--------------- | :----------------- |
+| **Gender**                        | Demographics         | Gender of the individual (Male/Female)                | Categorical         | -                | 2111               |
+| **Age**                           | Demographics         | Age of the individual                                  | Continuous          | Years            | 2111               |
+| **Height**                        | Demographics         | Height of the individual                               | Continuous          | Meters           | 2111               |
+| **Weight**                        | Demographics         | Weight of the individual                               | Continuous          | Kilograms        | 2111               |
+| **family_history_with_overweight**| Demographics         | Family history of being overweight (Yes/No)           | Categorical         | -                | 2111               |
+| **FAVC**                          | Eating Habits        | Frequent consumption of high-caloric food (Yes/No)    | Categorical         | -                | 2111               |
+| **FCVC**                          | Eating Habits        | Frequency of vegetable consumption                    | Continuous          | -                | 2111               |
+| **NCP**                           | Eating Habits        | Number of main meals per day                          | Continuous          | Count            | 2111               |
+| **CAEC**                          | Eating Habits        | Consumption of food between meals                     | Categorical         | -                | 2111               |
+| **SMOKE**                         | Lifestyle            | Smoking habits (Yes/No)                               | Categorical         | -                | 2111               |
+| **CH2O**                          | Eating Habits        | Daily water consumption                               | Continuous          | Liters           | 2111               |
+| **SCC**                           | Physical Condition   | Monitoring of calorie consumption (Yes/No)           | Categorical         | -                | 2111               |
+| **FAF**                           | Physical Condition   | Frequency of physical activity                        | Continuous          | Hours/Week       | 2111               |
+| **TUE**                           | Physical Condition   | Time spent using technology devices                   | Continuous          | Hours/Day        | 2111               |
+| **CALC**                          | Eating Habits        | Frequency of alcohol consumption                      | Categorical         | -                | 2111               |
+| **MTRANS**                        | Physical Condition   | Main mode of transportation                           | Categorical         | -                | 2111               |
+| **NObeyesdad**                    | Target               | BMI-based obesity classification                      | Categorical         | -                | 2111               |
 
-<p style="margin-top: 10px;">Table 1. Obesity Dataset Description: Feature Data</p>
+<p style="margin-top: 10px;">Table 1. Obesity Dataset Description: Whole Data</p>
 
 </div>
 
-<div align="left">
+<div align="center">
   
 | **Obesity Levels (BMI)** | **Range**           |
 | :----------------------- | :------------------ |
@@ -198,10 +200,106 @@ Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 �
 | Obesity II              | 35.0 to 39.9       |
 | Obesity III             | 40 and above       |
 
-<div align="center">
-
 <p style="margin-top: 10px;">Table 2. Obesity Dataset Description: Target Data</p>
 
 </div>
 
+비만 데이터는 총 17개의 feature data와 1개의 target data로 구성되어 있습니다. feature data의 경우 총 9개의 Categorical Data와 8개의 Numerical data로 이루어져 있습니다. 
+
+<div align="center">
+  
+![image](https://github.com/user-attachments/assets/2234feb2-8048-4e74-8809-16c4389f8276)
+<p style="margin-top: 10px;">Figure 1. Categorical Data</p>
 </div>
+
+### 2. Preprocessing
+#### 2.1. Encoding Non-Numerical Data
+딥러닝 모델을 학습시키기 위하여 Non-Numerical Data인 Categorical Data를 수치화시켜줍니다. 이때, 총 9개의 Categorical Data는 세가지 경우로 분류되어 수치화됩니다.
+
+- Case1: Unordered
+첫번째는 기존 데이터가 상대적인 크기로 정보를 담아내지 않는 경우입니다. 이는 FAVC(채식주의 섭취 여부), SMOKE(흡연 여부), SCC(일일 생활 습관 관리 여부)와 같이 정보는 예 또는 아니오로 나뉘기 때문에 해당 데이터를 0 또는 1로 변환하여 수치화를 진행하였습니다.
+```python
+# Imitate One-Hot Encoding
+
+# Gender
+overweight_data = pd.get_dummies(overweight_data, columns=['Gender'])
+
+# FAVC (자주 채식주의 음식을 섭취하는가)
+overweight_data = pd.get_dummies(overweight_data, columns=['FAVC'])
+
+# SMOKE(흡연 여부)
+overweight_data = pd.get_dummies(overweight_data, columns=['SMOKE'])
+
+# SCC(일일 생활 습관 관리 빈도, yse or no)
+overweight_data = pd.get_dummies(overweight_data, columns=['SCC'])
+
+# MTRANS (이동 수단: 'Automobile', 'Motorbike', 'Bike', 'Public_Transportation', 'Walking')
+overweight_data = pd.get_dummies(overweight_data, columns=['MTRANS'])
+
+# family_history_with_overweight(과체중 가족력)
+overweight_data = pd.get_dummies(overweight_data, columns=['family_history_with_overweight'])
+```
+
+- Case2: Ordered Data
+다음으로는 기존 데이터가 상대적인 크기로 정보를 담아내는 경우입니다. 이는 CAEC(식사 간 간식 섭취 빈도, no / Sometimes / Frequently / Always)와 같이 그 빈도에 따라 다른 정보를 담아내기 때문에 데이터를 수치화 할 때 상대적인 크기를 가지도록 처리하여야 합니다.
+
+```python
+# Feature Data
+
+# CAEC (식사 간 간식 섭취 빈도)
+overweight_data['CAEC'] = overweight_data['CAEC'].replace({'no': 0,'Sometimes': 1,'Frequently': 2,'Always': 3})
+
+# CALC (일일 칼로리 소비량 모니터링: 'no', 'Sometimes', 'Frequently', 'Always')
+overweight_data['CALC'] = overweight_data['CALC'].replace({'no': 0,'Sometimes': 1,'Frequently': 2,'Always': 3})
+```
+
+```python
+# Target Data
+
+# NObeyesdad(level of obesity state: 'Insufficient_Weight', 'Normal_Weight', 'Overweight_Level_II', 'Overweight_Level_I', 'Obesity_Type_II', 'Obesity_Type_III', 'Obesity_Type_I')
+overweight_data['NObeyesdad'] = overweight_data['NObeyesdad'].replace({'Insufficient_Weight': 0, 'Normal_Weight': 1, 'Overweight_Level_II': 2, 'Overweight_Level_I': 3, 'Obesity_Type_II': 4, 'Obesity_Type_III': 5, 'Obesity_Type_I': 6})
+```
+
+#### 2.2. Normalization and Checking Correlation
+딥러닝을 학습시키기 위하여 17개의 feature data를 정규화합니다. 그러고 난 이후에 target data와 17개의 feature data 사이의 상관관계를 살펴보면 그 결과는 다음과 같습니다.
+```
+Weight                                0.741384
+family_history_with_overweight_yes    0.459742
+FAVC_yes                              0.278537
+Age                                   0.247464
+SCC_no                                0.154936
+CH2O                                  0.152567
+CALC                                  0.087673
+FCVC                                  0.073456
+Height                                0.064963
+MTRANS_Public_Transportation          0.036256
+Gender_Female                         0.025778
+MTRANS_Automobile                     0.020617
+SMOKE_no                              0.009252
+SMOKE_yes                            -0.009252
+MTRANS_Motorbike                     -0.018451
+Gender_Male                          -0.025778
+MTRANS_Bike                          -0.032901
+NCP                                  -0.062796
+TUE                                  -0.087560
+MTRANS_Walking                       -0.130694
+SCC_yes                              -0.154936
+FAF                                  -0.159263
+FAVC_no                              -0.278537
+CAEC                                 -0.331238
+family_history_with_overweight_no    -0.459742
+Name: NObeyesdad, dtype: float64
+```
+
+몸무게와 비만 가족력을 제외하고서는 그 상관관계가 급격하게 줄어듦을 확인할 수 있습니다.
+
+#### 2.3. Divide Train Data and Test Data
+마지막으로 딥러닝 모델을 학습시키기 위하여 '훈련 데이터:검증 데이터:테스트 데이터'를 7:1:2로 분할합니다. 
+```
+Train 데이터셋 크기: 1476
+Validation 데이터셋 크기: 212
+Test 데이터셋 크기: 423
+```
+
+### 3. Train Deep Learning Model
+비만 데이터셋의 경우 target data가 카테고리형이기 때문에 classification model을 사용하였습니다. 그중에서 가장 기본적으로 쓰이는 MLP(Multi-Layer Perception)를 통하여 기본적인 예측 성능을 확인하였으며, 
