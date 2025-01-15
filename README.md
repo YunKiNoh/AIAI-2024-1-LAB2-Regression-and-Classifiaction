@@ -183,6 +183,9 @@ Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 �
 | **MTRANS**              | Physical Condition   | Main mode of transportation                           | Categorical         | -                |
 | **Obesity Levels**      | Target               | BMI-based obesity classification                      | Categorical         | -                |
 
+</div>
+
+<div align="left">
 | **Obesity Levels (BMI)** | **Range**           |
 | :----------------------- | :------------------ |
 | Underweight              | Less than 18.5     |
