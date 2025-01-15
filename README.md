@@ -142,8 +142,20 @@ Length  Diameter    Height  Whole_weight  Shucked_weight  \
 [4177 rows x 10 columns]
 ```
 
-#### 2.4. Train Deep Learning Model
+#### 2.4. Divide Train and Test dataset
 최종적으로 데이터를 학습 및 검증에 사용하기 위하여 적절히 분할해줍니다. 해당 과제의 경우 test:validation의 비율을 2:8로 분할하였습니다.
 
-### 3. Train and Test Deep Learning Model
-이번 경우에서는 회귀 모델 중 높은 성능을 보여주는 RndomForest와 GradientBoosting을 Ensemble하여 학습을 진행하였습니다. RandomForest의 경우 Bagging(Bootstrap Aggregation)을 통하여 모델을 학습시키는 방법으로, 하나의 학습 데이터를 여러갈래로 나뉘어서 여러번 모델을 학습시키기 때문에 학습에 있어서 효율적으로 높은 예측 결과를 도출할 수 있습니다. GradientBoosting의 경우 Bagging과는 다른 앙상블 기법 모델로써, 학습 데이터를 분할하여 단계별로 모델을 잔차를 줄여나가는 학습 방식입니다. 서로 다른 두 모델을 통하여 더 높은 정확도를 도출해내기 위하여 앙상블 시켜 학습을 진행하였습니다. 그 결과는 다음과 같습니다
+### 3. Train Deep Learning Model
+이번 경우에서는 회귀 모델 중 높은 성능을 보여주는 RndomForest와 GradientBoosting을 Ensemble하여 학습을 진행하였습니다. RandomForest의 경우 Bagging(Bootstrap Aggregation)을 통하여 모델을 학습시키는 방법으로, 하나의 학습 데이터를 여러갈래로 나뉘어서 여러번 모델을 학습시키기 때문에 학습에 있어서 효율적으로 높은 예측 결과를 도출할 수 있습니다. GradientBoosting의 경우 Bagging과는 다른 앙상블 기법 모델로써, 학습 데이터를 분할하여 단계별로 모델을 잔차를 줄여나가는 학습 방식입니다. 서로 다른 두 모델을 통하여 더 높은 정확도를 도출해내기 위하여 앙상블 시켜 학습을 진행하였습니다. 그 결과는 다음과 같습니다.
+```
+앙상블 모델 결과:
+MAE: 1.5053979037509384
+RMSE: 2.133168007407893
+```
+
+모델 예측의 정확도와 더불어 중요하게 평가되는 요소는 과적합 여부입니다. 아무리 학습 데이터에 대하여 예측이 정확하더라도 다른 데이터 셋에서 높은 정확도를 보여주지 못한다면 해당 모델은 정확도가 낮은 것이기 때문입니다. 이번 과제에서 학습 데이터에 대한 Error가 검증 데이터에 대한 Error보다 항상 높기 때문에 과적합되지 않았다고 판단하였습니다.
+<div align="center">
+  
+![image](https://github.com/user-attachments/assets/016ac72c-6095-4339-9763-1d15d6ff8682)
+<p style="margin-top: 10px;">Figure 7. Learning Curve</p>
+</div>
