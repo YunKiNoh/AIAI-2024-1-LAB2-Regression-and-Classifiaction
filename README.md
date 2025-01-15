@@ -165,24 +165,33 @@ RMSE: 2.133168007407893
 Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 사람들에 대한 신체 정보를 활용하여 비만의 위험성 정도를 예측하였습니다. 
 <div align="center">
 
-| Variable Name     | Role     | Type         | Description                                         | Units         | Missing Values |
-| :---------------- | :------- | :----------- | :-------------------------------------------------- | :------------ | :------------- |
-| Gender            | Feature  | Categorical  | Gender (Male/Female)                               | -             | no             |
-| Age               | Feature  | Continuous   | Age                                                | years         | no             |
-| Height            | Feature  | Continuous   | Height                                             | meters        | no             |
-| Weight            | Feature  | Continuous   | Weight                                             | kilograms     | no             |
-| FAVC              | Feature  | Categorical  | Frequent consumption of high-caloric food (Yes/No) | -             | no             |
-| FCVC              | Feature  | Continuous   | Frequency of vegetable consumption                 | -             | no             |
-| NCP               | Feature  | Integer      | Number of main meals                               | count         | no             |
-| CAEC              | Feature  | Categorical  | Frequency of food consumption between meals        | -             | no             |
-| CH20              | Feature  | Continuous   | Daily water consumption                            | liters        | no             |
-| CALC              | Feature  | Categorical  | Frequency of alcohol consumption                   | -             | no             |
-| SCC               | Feature  | Categorical  | Monitoring of calorie consumption (Yes/No)        | -             | no             |
-| FAF               | Feature  | Continuous   | Physical activity frequency                        | hours/week    | no             |
-| TUE               | Feature  | Continuous   | Time using technology devices                      | hours/day     | no             |
-| MTRANS            | Feature  | Categorical  | Main mode of transportation                        | -             | no             |
-| Obesity Levels    | Target   | Categorical  | Obesity levels (Underweight, Normal, Overweight, Obese) | -             | no             |
+| **Attribute Name**      | **Category**         | **Description**                                        | **Data Type**       | **Units**        |
+| :----------------------- | :------------------- | :----------------------------------------------------- | :------------------ | :--------------- |
+| **Gender**              | Demographics         | Gender of the individual (Male/Female)                | Categorical         | -                |
+| **Age**                 | Demographics         | Age of the individual                                  | Continuous          | Years            |
+| **Height**              | Demographics         | Height of the individual                               | Continuous          | Meters           |
+| **Weight**              | Demographics         | Weight of the individual                               | Continuous          | Kilograms        |
+| **FAVC**                | Eating Habits        | Frequent consumption of high-caloric food (Yes/No)    | Categorical         | -                |
+| **FCVC**                | Eating Habits        | Frequency of vegetable consumption                    | Continuous          | -                |
+| **NCP**                 | Eating Habits        | Number of main meals per day                          | Integer             | Count            |
+| **CAEC**                | Eating Habits        | Consumption of food between meals                     | Categorical         | -                |
+| **CH20**                | Eating Habits        | Daily water consumption                               | Continuous          | Liters           |
+| **CALC**                | Eating Habits        | Frequency of alcohol consumption                      | Categorical         | -                |
+| **SCC**                 | Physical Condition   | Monitoring of calorie consumption (Yes/No)           | Categorical         | -                |
+| **FAF**                 | Physical Condition   | Frequency of physical activity                        | Continuous          | Hours/Week       |
+| **TUE**                 | Physical Condition   | Time spent using technology devices                   | Continuous          | Hours/Day        |
+| **MTRANS**              | Physical Condition   | Main mode of transportation                           | Categorical         | -                |
+| **Obesity Levels**      | Target               | BMI-based obesity classification                      | Categorical         | -                |
 
-<p style="margin-top: 10px;">Table 1. Abalone Dataset Description</p>
+| **Obesity Levels (BMI)** | **Range**           |
+| :----------------------- | :------------------ |
+| Underweight              | Less than 18.5     |
+| Normal                  | 18.5 to 24.9       |
+| Overweight              | 25.0 to 29.9       |
+| Obesity I               | 30.0 to 34.9       |
+| Obesity II              | 35.0 to 39.9       |
+| Obesity III             | 40 and above       |
+
+<p style="margin-top: 10px;">Table 1. Obesity Dataset Description</p>
 
 </div>
