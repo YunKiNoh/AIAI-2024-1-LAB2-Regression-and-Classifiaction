@@ -183,6 +183,8 @@ Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 �
 | **MTRANS**              | Physical Condition   | Main mode of transportation                           | Categorical         | -                |
 | **Obesity Levels**      | Target               | BMI-based obesity classification                      | Categorical         | -                |
 
+<p style="margin-top: 10px;">Table 1. Obesity Dataset Description: Feature Data</p>
+
 </div>
 
 <div align="left">
@@ -198,7 +200,7 @@ Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 �
 
 <div align="center">
 
-<p style="margin-top: 10px;">Table 1. Obesity Dataset Description</p>
+<p style="margin-top: 10px;">Table 2. Obesity Dataset Description: Target Data</p>
 
 </div>
 
