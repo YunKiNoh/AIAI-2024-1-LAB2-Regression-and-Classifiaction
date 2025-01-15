@@ -209,7 +209,7 @@ Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 �
 <div align="center">
   
 ![image](https://github.com/user-attachments/assets/2234feb2-8048-4e74-8809-16c4389f8276)
-<p style="margin-top: 10px;">Figure 1. Categorical Data</p>
+<p style="margin-top: 10px;">Figure 8. Categorical Data</p>
 </div>
 
 ### 2. Preprocessing
