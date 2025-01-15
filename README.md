@@ -216,7 +216,7 @@ Part2에서는 14세에서 61세의 멕시코, 페루, 그리고 콜롬비아 �
 #### 2.1. Encoding Non-Numerical Data
 딥러닝 모델을 학습시키기 위하여 Non-Numerical Data인 Categorical Data를 수치화시켜줍니다. 이때, 총 9개의 Categorical Data는 세가지 경우로 분류되어 수치화됩니다.
 
-- Case1: Unordered
+- Case1: Unordered<br>
 첫번째는 기존 데이터가 상대적인 크기로 정보를 담아내지 않는 경우입니다. 이는 FAVC(채식주의 섭취 여부), SMOKE(흡연 여부), SCC(일일 생활 습관 관리 여부)와 같이 정보는 예 또는 아니오로 나뉘기 때문에 해당 데이터를 0 또는 1로 변환하여 수치화를 진행하였습니다.
 ```python
 # Imitate One-Hot Encoding
@@ -240,13 +240,12 @@ overweight_data = pd.get_dummies(overweight_data, columns=['MTRANS'])
 overweight_data = pd.get_dummies(overweight_data, columns=['family_history_with_overweight'])
 ```
 
-- Case2: Ordered Data
+- Case2: Ordered Data<br>
 다음으로는 기존 데이터가 상대적인 크기로 정보를 담아내는 경우입니다. 이는 CAEC(식사 간 간식 섭취 빈도, no / Sometimes / Frequently / Always)와 같이 그 빈도에 따라 다른 정보를 담아내기 때문에 데이터를 수치화 할 때 상대적인 크기를 가지도록 처리하여야 합니다.
 
 ```python
 # Feature Data
-
-# CAEC (식사 간 간식 섭취 빈도)
+## CAEC (식사 간 간식 섭취 빈도)
 overweight_data['CAEC'] = overweight_data['CAEC'].replace({'no': 0,'Sometimes': 1,'Frequently': 2,'Always': 3})
 
 # CALC (일일 칼로리 소비량 모니터링: 'no', 'Sometimes', 'Frequently', 'Always')
@@ -255,8 +254,7 @@ overweight_data['CALC'] = overweight_data['CALC'].replace({'no': 0,'Sometimes': 
 
 ```python
 # Target Data
-
-# NObeyesdad(level of obesity state: 'Insufficient_Weight', 'Normal_Weight', 'Overweight_Level_II', 'Overweight_Level_I', 'Obesity_Type_II', 'Obesity_Type_III', 'Obesity_Type_I')
+## NObeyesdad(level of obesity state: 'Insufficient_Weight', 'Normal_Weight', 'Overweight_Level_II', 'Overweight_Level_I', 'Obesity_Type_II', 'Obesity_Type_III', 'Obesity_Type_I')
 overweight_data['NObeyesdad'] = overweight_data['NObeyesdad'].replace({'Insufficient_Weight': 0, 'Normal_Weight': 1, 'Overweight_Level_II': 2, 'Overweight_Level_I': 3, 'Obesity_Type_II': 4, 'Obesity_Type_III': 5, 'Obesity_Type_I': 6})
 ```
 
