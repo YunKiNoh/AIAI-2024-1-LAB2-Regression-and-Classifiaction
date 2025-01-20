@@ -1,4 +1,4 @@
-# AIAI(AI활용프로그래밍) LAB2: Repression Model
+# AIAI(AI활용프로그래밍) LAB2: Machine Learning
 본 레포지토리는 2024년 1학기 AI활용프로그래밍 강의의 두 번째 과제인 'Assignment2: Regression and Classification'의 내용을 정리 및 소개하기 위하여 작성하였습니다. 본 과제는 총 두 Part로 나뉘어져 있는데, 2-1은 Regression에 대한 것이고 2-2와 2-3은 Classification에 대한 내용입니다. '2-1:Regression'의 경우 전복의 여러가지 데이터를 통해 전복 나이를 예측하였으며, '2-2,2-3: Classification'의 경우 각 사람에 대한 데이터를 통해 비만의 정도를 예측하였습니다. 본 과제들은 모두 오픈 데이터셋을 활용하였습니다.
 
 ## Part1: Predict Abalone's Rings information by Using Regression Model
